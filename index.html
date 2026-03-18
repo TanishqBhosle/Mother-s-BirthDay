@@ -689,7 +689,8 @@ document.addEventListener('click',e=>{
 
 /* ===================== POPUP ===================== */
 function openPopup(key,title,msg){
-  document.getElementById('popup-img').src=photos[key]||'';
+  const el = document.querySelector(`[onclick*="openPopup('${key}'"]`);
+  document.getElementById('popup-img').src = el && el.querySelector('img') ? el.querySelector('img').src : '';
   document.getElementById('popup-title').textContent=title;
   document.getElementById('popup-msg').textContent=msg;
   document.getElementById('popup').classList.add('active');
@@ -699,7 +700,8 @@ document.getElementById('popup').addEventListener('click',e=>{if(e.target===e.cu
 
 /* ===================== LIGHTBOX ===================== */
 function openLightbox(key,caption){
-  document.getElementById('lightbox-img').src=photos[key]||'';
+  const el = document.querySelector(`[onclick*="openLightbox('${key}'"]`);
+  document.getElementById('lightbox-img').src = el && el.querySelector('img') ? el.querySelector('img').src : '';
   document.getElementById('lightbox-caption').textContent=caption;
   document.getElementById('lightbox').classList.add('active');
 }
